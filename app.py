@@ -1,13 +1,15 @@
 from fastapi import FastAPI
 
-from routers import ROUTERS
+import endpoint
 
 
+app = FastAPI(
+    title="API for Jason's Project",
+    version="0.0.3",
+    description="API for Jason's Project",
+    openapi_url="/jasonapi.json"
+)
 
-app = FastAPI()
-
-for router in ROUTERS:
-
-    app.include_router(router)
+app.include_router(endpoint.routers)
 
 
